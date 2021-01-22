@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Header from './components/Header';
 import Task from './components/Tasks';
+import AddTask from './components/AddTask';
 
 
 const App = () => {
@@ -33,9 +34,16 @@ const App = () => {
     setTasks(tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task))
   }
 
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = {id, ...task}
+    setTasks([...tasks, newTask])
+  }
+
   return (
     <div className="container">
       <Header />
+      <AddTask onAdd={addTask}/>
       { tasks.length <= 0 ? ('Nothing to Show ') : (<Task tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>)}
     </div>
   );
