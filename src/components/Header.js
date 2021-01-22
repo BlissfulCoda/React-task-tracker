@@ -1,19 +1,16 @@
-import PropTypes from 'prop-types'
+import Button from './Button'
 
 const Header = ({ name }) => {
     return (
-        <header className="container">
+        <header className='header'>
             <h1> Helloooo {name}</h1>
+            <Button/>
         </header>
     )
 }
 
 Header.defaultProps = {
     name: 'Ronnie'
-}
-
-Header.propTypes = {
-    name: PropTypes.string
 }
 
 export default Header
